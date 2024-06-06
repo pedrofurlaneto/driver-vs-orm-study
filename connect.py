@@ -4,13 +4,12 @@ def connect_database():
     try:
         database_connection = psycopg.connect(
             host='localhost',
-            dbname='postgres',
+            dbname='bd2',
             user = 'postgres',
-            password = 'postgres'
+            password = 'postgres',
+            autocommit = False
         )
 
-        print('Banco conectado')
-
         return database_connection
-    except Exception as e:
+    except psycopg.OperationalError as e:
         print(e)
