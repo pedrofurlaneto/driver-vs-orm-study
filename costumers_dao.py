@@ -1,7 +1,7 @@
 import psycopg
 from connect import connect_database
-from models.dao.utils.parse_dao_to_dto import parse_DAO_to_DTO_list
-from models.order_dto import Order_DTO
+from parse_dao_to_dto import parse_DAO_to_DTO_list
+from order_dto import Order_DTO
 
 
 def get_costumer_by_id(id: str) -> Order_DTO:
@@ -15,7 +15,7 @@ def get_costumer_by_id(id: str) -> Order_DTO:
             if session.fetchone() is None:
                 return None
 
-            return parse_DAO_to_DTO_list(session)[0]
+            return parse_DAO_to_DTO_list(session)
 
         except psycopg.Error as e:
             print("get_costumer_by_id", e)
