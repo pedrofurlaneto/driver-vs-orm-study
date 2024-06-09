@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 psycopg = "*"
+datetime = "*"
 
 [dev-packages]
 
