@@ -5,9 +5,12 @@ from connect import DATA_BASE_CONNECTION_STRING
 def generate_order_data(order_id):
     order_dao = OrderDAO(DATA_BASE_CONNECTION_STRING)
     order = order_dao.get_order_by_id(order_id)
+
+    return order.items()
+
     if order is None:
         raise Exception('Pedido não encontrado')
-    return order.__dict__
+    return order
 
 
 

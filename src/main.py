@@ -39,7 +39,11 @@ def app():
             order_id = int(input('Order ID: '))
             try:
                 order = generate_order_data(order_id)
-                print(order)
+                for (key, value) in order:
+                    if (key.startswith('_')):
+                        continue
+                    
+                    print(f"{key}: {value}")
             except BaseException as e:
                 print(e)
             pass

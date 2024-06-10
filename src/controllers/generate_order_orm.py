@@ -22,7 +22,7 @@ def generate_order_orm(product_id, customer_id, quantity, employee_id):
     if product is None:
         raise Exception('Produto não encontrado')
     
-    if product.unitsinstock - quantity < 0:
+    if product['unitsinstock'] - quantity < 0:
         raise Exception('Produto não disponível')
 
     if not employee_dao.is_employee_valid(employee_id):
@@ -33,5 +33,5 @@ def generate_order_orm(product_id, customer_id, quantity, employee_id):
     order = order_dao.create_order(customer, employee_id)
     order_dao.save_order(order)
 
-    order_details = create_order_details(order.orderid, product, quantity)
+    order_details = create_order_details(order['orderid'], product, quantity)
     order_details_dao.save_order_details(order_details)

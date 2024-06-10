@@ -5,10 +5,11 @@ Base = declarative_base()
 
 class Order(Base):
     __tablename__ = 'orders'
+    __table_args__ = {'schema': 'northwind'}
     
     orderid = Column(Integer, primary_key=True, autoincrement=True)
     customerid = Column(String)
-    employeeid = Column(Integer, ForeignKey('employees.employeeid'))
+    employeeid = Column(Integer, ForeignKey('northwind.employees.employeeid'))
     orderdate = Column(DateTime)
     requireddate = Column(DateTime)
     shippeddate = Column(DateTime)
@@ -28,9 +29,10 @@ class Order(Base):
 
 class OrderDetail(Base):
     __tablename__ = 'order_details'
+    __table_args__ = {'schema': 'northwind'}
     
-    orderid = Column(Integer, ForeignKey('orders.orderid'), primary_key=True)
-    productid = Column(Integer, ForeignKey('products.productid'), primary_key=True)
+    orderid = Column(Integer, ForeignKey('northwind.orders.orderid'), primary_key=True)
+    productid = Column(Integer, ForeignKey('northwind.products.productid'), primary_key=True)
     unitprice = Column(Numeric)
     quantity = Column(Integer)
     discount = Column(Numeric)
@@ -40,6 +42,7 @@ class OrderDetail(Base):
 
 class Product(Base):
     __tablename__ = 'products'
+    __table_args__ = {'schema': 'northwind'}
     
     productid = Column(Integer, primary_key=True)
     productname = Column(String)
@@ -56,6 +59,7 @@ class Product(Base):
 
 class Employee(Base):
     __tablename__ = 'employees'
+    __table_args__ = {'schema': 'northwind'}
     
     employeeid = Column(Integer, primary_key=True)
     lastname = Column(String)
@@ -78,6 +82,7 @@ class Employee(Base):
 
 class Customer(Base):
     __tablename__ = 'customers'
+    __table_args__ = {'schema': 'northwind'}
     
     customerid = Column(String, primary_key=True)
     companyname = Column(String)

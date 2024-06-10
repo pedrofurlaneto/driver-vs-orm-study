@@ -39,8 +39,8 @@ class OrderDAO:
         session = self.Session()
         try:
             # Assuming orders are already in the database and orderid is autoincremented
-            last_order = session.query(Order).order_by(Order.orderid.desc()).first()
-            last_id = last_order.orderid if last_order else 0
+            last_order = session.query(Order).order_by(Order['orderid'].desc()).first()
+            last_id = last_order['orderid'] if last_order else 0
             order_data = {
                 "orderid": last_id + 1,
                 "customerid": customer["customerid"],
@@ -75,14 +75,14 @@ class OrderDAO:
         finally:
             session.close()
 
-def get_employee_ranking(self, start_date, end_date):
+    def get_employee_ranking(self, start_date, end_date):
         session = self.Session()
         ranking = session.query(
             Employee.firstname,
             Employee.lastname,
             func.count(Order.orderid).label('total_orders'),
             func.sum(OrderDetail.unitprice * OrderDetail.quantity).label('total_sales')
-        ).join(Order).join(OrderDetail).filter(
+        ).select_from(Employee).join(Order).join(OrderDetail).filter(
             Order.orderdate.between(start_date, end_date)
         ).group_by(Employee.firstname, Employee.lastname).order_by(desc('total_sales')).all()
         session.close()

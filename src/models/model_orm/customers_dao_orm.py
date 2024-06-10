@@ -13,7 +13,7 @@ class CustomerDAO:
         session = self.Session()
         try:
             customer = session.query(Customer).filter_by(customerid=customer_id).first()
-            if customer:
+            if customer is not None:
                 return customer.__dict__
             else:
                 print(f"Customer with ID {customer_id} not found.")

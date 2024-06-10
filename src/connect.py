@@ -4,9 +4,9 @@ def connect_database():
     try:
         database_connection = psycopg.connect(
             host='localhost',
-            dbname='northwind',
-            user = 'northwind_user',
-            password = 'northwind',
+            dbname='bd2',
+            user = 'postgres',
+            password = 'postgres',
             autocommit = False
         )
 
@@ -15,4 +15,4 @@ def connect_database():
         print(e)
 
 
-DATA_BASE_CONNECTION_STRING = 'postgresql://northwind_user:northwind@localhost:5432/northwind'
+DATA_BASE_CONNECTION_STRING = 'postgresql://postgres:postgres@localhost:5432/bd2'
