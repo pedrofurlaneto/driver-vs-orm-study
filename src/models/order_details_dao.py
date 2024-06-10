@@ -1,6 +1,6 @@
 import psycopg
 from connect import connect_database
-from models.order_details_dto import Order_Details_DTO
+from models.dtos.order_details_dto import Order_Details_DTO
 
 
 def save_order_details(order_details: Order_Details_DTO):
