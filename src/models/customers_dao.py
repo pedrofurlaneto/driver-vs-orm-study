@@ -1,7 +1,7 @@
 import psycopg
 from connect import connect_database
 from models.utils.parse_dao_to_dto import parse_DAO_to_DTO_list
-from models.customer_dto import Customer_DTO
+from models.dtos.customer_dto import Customer_DTO
 
 
 def get_customer_by_id(id: str) -> Customer_DTO:

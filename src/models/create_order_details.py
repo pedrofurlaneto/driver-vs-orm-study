@@ -1,4 +1,4 @@
-from models.product_dto import Product_DTO
+from models.dtos.product_dto import Product_DTO
 
 
 def create_order_details(order_id, product: Product_DTO, quantity):
@@ -9,3 +9,5 @@ def create_order_details(order_id, product: Product_DTO, quantity):
         "quantity": quantity,
         "discount": 0
     }
+
+

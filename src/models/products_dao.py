@@ -1,7 +1,7 @@
 import psycopg
 from connect import connect_database
 from models.utils.parse_dao_to_dto import parse_DAO_to_DTO_list
-from models.product_dto import Product_DTO
+from models.dtos.product_dto import Product_DTO
 
 def update_product_units_in_stock(product_id: int, units: int):
     with connect_database() as db_connection:

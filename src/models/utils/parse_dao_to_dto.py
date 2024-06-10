@@ -1,5 +1,3 @@
-import psycopg
-
 def parse_DAO_to_DTO_list(description, rows): 
     entity_list = []
 

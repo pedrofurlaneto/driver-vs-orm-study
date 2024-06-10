@@ -1,7 +1,7 @@
 import psycopg
 from connect import connect_database
-from models.customer_dto import Customer_DTO
-from models.order_dto import Order_DTO
+from models.dtos.customer_dto import Customer_DTO
+from models.dtos.order_dto import Order_DTO
 
 
 def save_order(order: Order_DTO):
